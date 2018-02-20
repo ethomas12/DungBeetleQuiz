@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Dung Beetle Quiz</string>
+
+    <string name="quizTitle">What do you know about dung beetles?</string>
+
+    <string name="quizDescription">This is a quiz about dung beetles.</string>
+
+    <!--Questions-->
+    <string name="quiz_1">What part of the world are there no dung beetles?</string>
+
+    <string name="quiz_2">Dung beetles belong to three basic groups.  What are they?</string>
+
+    <string name="checkbox_hint">Check all that are correct</string>
+
+    <string name="quiz_2_a">builders</string>
+    <string name="quiz_2_b">tunnelers</string>
+    <string name="quiz_2_c">rollers</string>
+    <string name="quiz_2_d">dwellers</string>
+    <string name="quiz_2_e">poopers</string>
+
+    <string name="quiz_3">True or False: Dung Beetles only eat dung from herbivores? </string>
+
+    <string name="true_choice">True</string>
+
+    <string name="false_choice">False</string>
+
+
+    <string name="quiz_4">Why do dung beetles eat poop?</string>
+
+    <string name="your_answer">Your Answer</string>
+
+    <string name="quiz_5">Young dung beetles (larvae) and adult dung beetles eat different parts of the dung.  Who eats what?</string>
+
+    <string name="ab_choice">Adults eat the solid matter.  Larave drink the juice.</string>
+    <string name="ba_choice">Larave eat the solid matter.  Adults drink the juice.</string>
+
+
+    <string name="quiz_6">What do roller type dung beetles do with their ball?</string>
+
+    <string name="quiz_6_a">Roll it into candles to read by.</string>
+    <string name="quiz_6_b">Roll it away to eat it later.</string>
+    <string name="quiz_6_c">Roll it into a snake to scare their friends.</string>
+    <string name="quiz_6_d">Roll it away to lay eggs in it.</string>
+    <string name="quiz_6_e">Roll it away to play marbles with it.</string>
+
+
+
+    <!--Image descriptions-->
+    <string name="na_img">North America</string>
+
+    <string name="au_img">Australia</string>
+
+    <string name="eu_img">Europe</string>
+
+    <string name="an_img">Antarctica</string>
+
+
+    <!--Answers-->
+    <string name="fact_1">Dung beetles are found worldwide, on every continent except Antarctica.</string>
+
+    <string name="fact_2">Dung beetles belong to three basic groups: rollers, tunnelers, and dwellers</string>
+
+    <string name="fact_3">Some will seek dung from omnivores, or animals that eat plants as well as meat. </string>
+
+    <string name="fact_4">The undigested bits of food that pass out of an animal in its dung provides food for dung beetles. </string>
+
+    <string name="fact_5">Dung beetle larvae eat the solid dung while adult dung beetles stick to liquids.</string>
+
+    <string name="fact_6">Rollers roll their ball away to either munch on it later or to use as a place to lay their eggs.</string>
+
+    <!--Score area-->
+    <string name="btn_text_1">Score</string>
+    <string name="btn_text_check">Check Your Answer</string>
+
+
+    <!--<string name="final_score_message">You got <xliff:g id="finalScore" example="8">%s</xliff:g> out of <xliff:g id="startScore" example="8">%s</xliff:g> correct.</string>-->
+
+
+</resources>
