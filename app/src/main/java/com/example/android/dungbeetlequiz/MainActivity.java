@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Try again",
+                Toast.makeText(getApplicationContext(), "Not quite",
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Try again",
+                Toast.makeText(getApplicationContext(), "Nope",
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -107,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
         TextView answer2TextView = findViewById(R.id.answer_2);
         answer2TextView.setText(R.string.fact_2);
 
-        Log.v("MainActivity", "After Q2 sumFalse equals =  " + sumFalse);
-
     }
 
     //  Question 3 checkboxes
@@ -122,9 +120,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (isTrue_3) {
             sumFalse = +1;
+            Toast.makeText(getApplicationContext(), "Not quite",
+                    Toast.LENGTH_SHORT).show();
 
         } else if (isFalse_3) {
             sumFalse += 0;
+            Toast.makeText(getApplicationContext(), "That's right!",
+                    Toast.LENGTH_SHORT).show();
         }
 
         TextView answer3TextView = findViewById(R.id.answer_3);
@@ -139,8 +141,6 @@ public class MainActivity extends AppCompatActivity {
         TextView answer4TextView = findViewById(R.id.answer_4);
         answer4TextView.setText(R.string.fact_4);
 
-        Log.v("MainActivity", "After Q4 sumFalse equals =  " + sumFalse);
-
     }
 
     // Question 5 fill in the blank
@@ -153,15 +153,18 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.babies_adults_radio_button:
                 if (checked)
+                    Toast.makeText(getApplicationContext(), "That's right!",
+                            Toast.LENGTH_SHORT).show();
                     break;
 
             case R.id.adults_babies_radio_button:
                 if (checked)
+                    Toast.makeText(getApplicationContext(), "Not quite",
+                            Toast.LENGTH_SHORT).show();
                     sumFalse += 1;
                     break;
         }
 
-        Log.v("MainActivity", "After Q5 sumFalse equals =  " + sumFalse);
     }
 
     public void checkBtn5a(View view) {
@@ -171,33 +174,32 @@ public class MainActivity extends AppCompatActivity {
 
     //  Question 6 checkboxes
     public void checkBtn6(View view) {
-        CheckBox checkbox6a = findViewById(R.id.checkbox_6_a);
-        boolean isCandles = checkbox6a.isChecked();
+        TextView answer6TextView = findViewById(R.id.answer_6);
+        answer6TextView.setText(R.string.fact_6);
+
+//        CheckBox checkbox6a = findViewById(R.id.checkbox_6_a);
+//        boolean isCandles = checkbox6a.isChecked();
 
         CheckBox checkBox6b = findViewById(R.id.checkbox_6_b);
         boolean isEat = checkBox6b.isChecked();
 
-        CheckBox checkbox6c = findViewById(R.id.checkbox_6_c);
-        boolean isSnake = checkbox6c.isChecked();
+//        CheckBox checkbox6c = findViewById(R.id.checkbox_6_c);
+//        boolean isSnake = checkbox6c.isChecked();
 
         CheckBox checkbox6d = findViewById(R.id.checkbox_6_d);
         boolean isLive = checkbox6d.isChecked();
 
-        CheckBox checkbox6e = findViewById(R.id.checkbox_6_e);
-        boolean isMarbles = checkbox6e.isChecked();
+//        CheckBox checkbox6e = findViewById(R.id.checkbox_6_e);
+//        boolean isMarbles = checkbox6e.isChecked();
 
-        if (isCandles || isMarbles || isSnake) {
+        if (!isEat || !isLive) {
+            Toast.makeText(getApplicationContext(), "Not quite",
+                    Toast.LENGTH_SHORT).show();
             sumFalse += 1;
+        } else {
+            Toast.makeText(getApplicationContext(), "That's right",
+                    Toast.LENGTH_SHORT).show();
         }
-
-        else if (isEat && isLive) {
-            return;
-        }
-
-        Log.v("MainActivity", "After Q6 sumFalse equals =  " + sumFalse);
-
-        TextView answer6TextView = findViewById(R.id.answer_6);
-        answer6TextView.setText(R.string.fact_6);
     }
 
     public int submitScore(View view) {
