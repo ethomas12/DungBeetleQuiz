@@ -20,20 +20,18 @@ public class MainActivity extends AppCompatActivity {
     ImageButton imageButton4; //australia
 
     int sumFalse = 0;
-    int startScore = 6;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkBtn1();
+        addOnClickListener();
 
     }
 
-    //  Question 1 Image Button
-    public void checkBtn1() {
+    // ************ Question 1 ************* //
+    public void addOnClickListener() {
 
         imageButton1 = findViewById(R.id.europe_pic);
         imageButton2 = findViewById(R.id.antarctica_pic);
@@ -83,11 +81,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //  Question 2 checkboxes
-    public void checkBtn2(View view) {
-        CheckBox checkbox2a = findViewById(R.id.checkbox_2_a);
-        boolean isBuilders = checkbox2a.isChecked();
+    public int submitScore(View view) {
 
+        // ************ Question 2 ************* //
         CheckBox checkBox2b = findViewById(R.id.checkbox_2_b);
         boolean isTunnelers = checkBox2b.isChecked();
 
@@ -97,102 +93,54 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkbox2d = findViewById(R.id.checkbox_2_d);
         boolean isDwellers = checkbox2d.isChecked();
 
-        CheckBox checkbox2e = findViewById(R.id.checkbox_2_e);
-        boolean isPoopers = checkbox2e.isChecked();
-
-        if (!isTunnelers || !isDwellers || !isRollers) {
+        if (!isTunnelers | !isDwellers | !isRollers) {
             sumFalse += 1;
         }
 
-        TextView answer2TextView = findViewById(R.id.answer_2);
-        answer2TextView.setText(R.string.fact_2);
-
-    }
-
-    //  Question 3 checkboxes
-    public void checkBtn3(View view) {
-
+        // ************ Question 3 ************* //
         RadioButton checkbox3a = findViewById(R.id.true_radio_button);
         boolean isTrue_3 = checkbox3a.isChecked();
 
         RadioButton checkBox3b = findViewById(R.id.false_radio_button);
         boolean isFalse_3 = checkBox3b.isChecked();
 
+
         if (isTrue_3) {
-            sumFalse = +1;
+            sumFalse += 1;
             Toast.makeText(getApplicationContext(), "Not quite",
                     Toast.LENGTH_SHORT).show();
 
-        } else if (isFalse_3) {
-            sumFalse += 0;
+        } if (isFalse_3) {
             Toast.makeText(getApplicationContext(), "That's right!",
                     Toast.LENGTH_SHORT).show();
         }
 
-        TextView answer3TextView = findViewById(R.id.answer_3);
-        answer3TextView.setText(R.string.fact_3);
-        Log.v("MainActivity", "After Q3 sumFalse equals =  " + sumFalse);
+        // ************ Question 5 ************* //
+        RadioButton checkbox5a = findViewById(R.id.babies_adults_radio_button);
+        boolean isTrue_5 = checkbox5a.isChecked();
 
-    }
+        RadioButton checkBox5b = findViewById(R.id.adults_babies_radio_button);
+        boolean isFalse_5 = checkBox5b.isChecked();
 
+        if (isFalse_5) {
+            sumFalse += 1;
+            Toast.makeText(getApplicationContext(), "Not quite",
+                    Toast.LENGTH_SHORT).show();
 
-    // Question 4 fill in the blank
-    public void checkBtn4(View view) {
-        TextView answer4TextView = findViewById(R.id.answer_4);
-        answer4TextView.setText(R.string.fact_4);
-
-    }
-
-    // Question 5 fill in the blank
-    public void checkBtn5(View view) {
-
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-
-            case R.id.babies_adults_radio_button:
-                if (checked)
-                    Toast.makeText(getApplicationContext(), "That's right!",
-                            Toast.LENGTH_SHORT).show();
-                    break;
-
-            case R.id.adults_babies_radio_button:
-                if (checked)
-                    Toast.makeText(getApplicationContext(), "Not quite",
-                            Toast.LENGTH_SHORT).show();
-                    sumFalse += 1;
-                    break;
+        } if (isTrue_5) {
+            Toast.makeText(getApplicationContext(), "That's right!",
+                    Toast.LENGTH_SHORT).show();
         }
 
-    }
 
-    public void checkBtn5a(View view) {
-        TextView answer5TextView = findViewById(R.id.answer_5);
-        answer5TextView.setText(R.string.fact_5);
-    }
-
-    //  Question 6 checkboxes
-    public void checkBtn6(View view) {
-        TextView answer6TextView = findViewById(R.id.answer_6);
-        answer6TextView.setText(R.string.fact_6);
-
-//        CheckBox checkbox6a = findViewById(R.id.checkbox_6_a);
-//        boolean isCandles = checkbox6a.isChecked();
-
+        // ************ Question 6 ************* //
         CheckBox checkBox6b = findViewById(R.id.checkbox_6_b);
         boolean isEat = checkBox6b.isChecked();
-
-//        CheckBox checkbox6c = findViewById(R.id.checkbox_6_c);
-//        boolean isSnake = checkbox6c.isChecked();
 
         CheckBox checkbox6d = findViewById(R.id.checkbox_6_d);
         boolean isLive = checkbox6d.isChecked();
 
-//        CheckBox checkbox6e = findViewById(R.id.checkbox_6_e);
-//        boolean isMarbles = checkbox6e.isChecked();
-
-        if (!isEat || !isLive) {
+        if (!isEat | !isLive) {
             Toast.makeText(getApplicationContext(), "Not quite",
                     Toast.LENGTH_SHORT).show();
             sumFalse += 1;
@@ -200,9 +148,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "That's right",
                     Toast.LENGTH_SHORT).show();
         }
-    }
 
-    public int submitScore(View view) {
+
+        int startScore = 6;
+
         int finalScore = startScore - sumFalse;
 
         TextView quantityTextView = findViewById(R.id.final_score_message);
@@ -211,4 +160,33 @@ public class MainActivity extends AppCompatActivity {
         return finalScore;
     }
 
+    //  Question 2 checkboxes
+    public void checkBtn2(View view) {
+        TextView answer2TextView = findViewById(R.id.answer_2);
+        answer2TextView.setText(R.string.fact_2);
+    }
+
+    //  Question 3 true / false
+    public void checkBtn3(View view) {
+        TextView answer3TextView = findViewById(R.id.answer_3);
+        answer3TextView.setText(R.string.fact_3);
+    }
+
+    // Question 4 fill in the blank
+    public void checkBtn4(View view) {
+        TextView answer4TextView = findViewById(R.id.answer_4);
+        answer4TextView.setText(R.string.fact_4);
+    }
+
+    // Question 5  choose A/B
+    public void checkBtn5(View view) {
+        TextView answer5TextView = findViewById(R.id.answer_5);
+        answer5TextView.setText(R.string.fact_5);
+    }
+
+    //  Question 6 checkboxes
+    public void checkBtn6(View view) {
+        TextView answer6TextView = findViewById(R.id.answer_6);
+        answer6TextView.setText(R.string.fact_6);
+    }
 }

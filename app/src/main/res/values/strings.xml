@@ -21,7 +21,6 @@
     <string name="quiz_3">True or False: Dung Beetles only eat dung from herbivores? </string>
 
     <string name="true_choice">True</string>
-
     <string name="false_choice">False</string>
 
 
@@ -39,7 +38,7 @@
 
     <string name="quiz_6_a">Roll it into candles to read by.</string>
     <string name="quiz_6_b">Roll it away to eat it later.</string>
-    <string name="quiz_6_c">Roll it into a snake to scare their friends.</string>
+    <string name="quiz_6_c">Roll it into a snake shape to scare their friends.</string>
     <string name="quiz_6_d">Roll it away to lay eggs in it.</string>
     <string name="quiz_6_e">Roll it away to play marbles with it.</string>
 
@@ -70,7 +69,8 @@
 
     <!--Score area-->
     <string name="btn_text_1">Score</string>
-    <string name="btn_text_check">Check Your Answer</string>
+
+    <string name="btn_text_check">See the answer</string>
 
 
     <!--<string name="final_score_message">You got <xliff:g id="finalScore" example="8">%s</xliff:g> out of <xliff:g id="startScore" example="8">%s</xliff:g> correct.</string>-->

@@ -246,7 +246,7 @@
                 <Button
                     android:id="@+id/check_5_button"
                     style="@style/checkButtons"
-                    android:onClick="checkBtn5a"
+                    android:onClick="checkBtn5"
                     />
 
                 <TextView
