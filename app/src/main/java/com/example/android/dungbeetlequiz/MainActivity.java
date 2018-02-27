@@ -1,8 +1,8 @@
 package com.example.android.dungbeetlequiz;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -11,13 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
-
-public class MainActivity extends AppCompatActivity {
-
-    ImageButton imageButton1; //europe
-    ImageButton imageButton2; //antarctica
-    ImageButton imageButton3; //north america
-    ImageButton imageButton4; //australia
+public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     int sumFalse = 0;
 
@@ -26,64 +20,57 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        addOnClickListener();
-
-    }
-
     // ************ Question 1 ************* //
-    public void addOnClickListener() {
+        ImageButton imageButton1 = findViewById(R.id.europe_pic); //europe
+        imageButton1.setOnClickListener(this);
 
-        imageButton1 = findViewById(R.id.europe_pic);
-        imageButton2 = findViewById(R.id.antarctica_pic);
-        imageButton3 = findViewById(R.id.na_pic);
-        imageButton4 = findViewById(R.id.australia_pic);
+        ImageButton imageButton2 = findViewById(R.id.antarctica_pic); //antarctica
+        imageButton2.setOnClickListener(this);
 
-        //        Begin methods
+        ImageButton imageButton3 = findViewById(R.id.na_pic); //north america
+        imageButton3.setOnClickListener(this);
 
-        imageButton2.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(getApplicationContext(), "That's right!",
-                        Toast.LENGTH_SHORT).show();
-
-                TextView answer1TextView = findViewById(R.id.answer_1);
-                answer1TextView.setText(R.string.fact_1);
-            }
-        });
-
-        imageButton1.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Try again",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButton3.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Not quite",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        imageButton4.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Nope",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        ImageButton imageButton4 = findViewById(R.id.australia_pic); //australia
+        imageButton4.setOnClickListener(this);
     }
+
+        //implement the onClick method here
+        public void onClick(View v) {
+            // Perform action on click
+            switch(v.getId()) {
+
+                case R.id.europe_pic:
+                    //Make Toast
+                    Toast.makeText(getApplicationContext(), "Try again",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.antarctica_pic:
+                    Toast.makeText(getApplicationContext(), "That's right!",
+                            Toast.LENGTH_SHORT).show();
+
+                    //show answer
+                    TextView answer1TextView = findViewById(R.id.answer_1);
+                    answer1TextView.setText(R.string.fact_1);
+                    break;
+                case R.id.na_pic:
+                    Toast.makeText(getApplicationContext(), "Not quite",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.australia_pic:
+                    Toast.makeText(getApplicationContext(), "Nope",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+
+            }
+        }
+
 
     public int submitScore(View view) {
 
         // ************ Question 2 ************* //
+        CheckBox checkbox2a = findViewById(R.id.checkbox_2_a);
+        boolean isBuilders = checkbox2a.isChecked();
+
         CheckBox checkBox2b = findViewById(R.id.checkbox_2_b);
         boolean isTunnelers = checkBox2b.isChecked();
 
@@ -93,7 +80,14 @@ public class MainActivity extends AppCompatActivity {
         CheckBox checkbox2d = findViewById(R.id.checkbox_2_d);
         boolean isDwellers = checkbox2d.isChecked();
 
+        CheckBox checkbox2e = findViewById(R.id.checkbox_2_e);
+        boolean isPoopers = checkbox2e.isChecked();
+
         if (!isTunnelers | !isDwellers | !isRollers) {
+            sumFalse += 1;
+        }
+
+        else if (isBuilders || isPoopers) {
             sumFalse += 1;
         }
 
@@ -105,14 +99,8 @@ public class MainActivity extends AppCompatActivity {
         boolean isFalse_3 = checkBox3b.isChecked();
 
 
-        if (isTrue_3) {
+        if (isTrue_3 | !isFalse_3) {
             sumFalse += 1;
-            Toast.makeText(getApplicationContext(), "Not quite",
-                    Toast.LENGTH_SHORT).show();
-
-        } if (isFalse_3) {
-            Toast.makeText(getApplicationContext(), "That's right!",
-                    Toast.LENGTH_SHORT).show();
         }
 
         // ************ Question 5 ************* //
@@ -122,33 +110,38 @@ public class MainActivity extends AppCompatActivity {
         RadioButton checkBox5b = findViewById(R.id.adults_babies_radio_button);
         boolean isFalse_5 = checkBox5b.isChecked();
 
-        if (isFalse_5) {
+        if (isFalse_5 || !isTrue_5) {
             sumFalse += 1;
-            Toast.makeText(getApplicationContext(), "Not quite",
-                    Toast.LENGTH_SHORT).show();
-
-        } if (isTrue_5) {
-            Toast.makeText(getApplicationContext(), "That's right!",
-                    Toast.LENGTH_SHORT).show();
         }
 
 
         // ************ Question 6 ************* //
+
+        CheckBox checkbox6a = findViewById(R.id.checkbox_6_a);
+        boolean isCandles = checkbox6a.isChecked();
+
         CheckBox checkBox6b = findViewById(R.id.checkbox_6_b);
         boolean isEat = checkBox6b.isChecked();
+
+        CheckBox checkbox6c = findViewById(R.id.checkbox_6_c);
+        boolean isSnake = checkbox6c.isChecked();
 
         CheckBox checkbox6d = findViewById(R.id.checkbox_6_d);
         boolean isLive = checkbox6d.isChecked();
 
+        CheckBox checkbox6e = findViewById(R.id.checkbox_6_e);
+        boolean isMarbles = checkbox6e.isChecked();
+
         if (!isEat | !isLive) {
-            Toast.makeText(getApplicationContext(), "Not quite",
-                    Toast.LENGTH_SHORT).show();
+
             sumFalse += 1;
-        } else {
-            Toast.makeText(getApplicationContext(), "That's right",
-                    Toast.LENGTH_SHORT).show();
+
+        } else if (isCandles || isSnake || isMarbles) {
+
+            sumFalse += 1;
         }
 
+        //************* Calculate score ************//
 
         int startScore = 6;
 
